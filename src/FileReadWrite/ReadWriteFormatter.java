@@ -1,6 +1,17 @@
 package FileReadWrite;
 import java.io.*;
 
+/**
+ * Reads and Formats a file.
+ * 
+ * @param args[0] data source file path 
+ * @param args[1] destination file path 
+ * @parma args[2] number of records in file
+ * <p>
+ * precondition: args[0] and args[1] are absolute file paths, args[2] is provided to user
+ * @author Wesley
+ *
+ */
 public class ReadWriteFormatter {
 	public static void main(String[] args) throws IOException {
 		try {

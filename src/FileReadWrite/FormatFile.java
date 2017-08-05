@@ -1,6 +1,11 @@
 package FileReadWrite;
 import java.io.*;
 
+/**
+ * Formats the lines and writes to a file
+ * @author Wesley
+ *
+ */
 public class FormatFile {
 
 	private static final String[] HEADERS = { "State", "Population", "Child Population", "Child Poverty Population",
@@ -11,24 +16,41 @@ public class FormatFile {
 	private String[] patterns = new String[HEADERS.length];
 	private WriteFile writer;
 
+	/**
+	 * Constructor for FormatFile with ReadFile and WriteFile objects as arguments
+	 * @param rf
+	 * @param wf
+	 */
 	FormatFile(ReadFile rf, WriteFile wf) {
 		line = rf.getFileLines();
 		writer = wf;
 		createPatterns();
 	}
-
+	
+	/**
+	 * Returns all the headers in 1 string
+	 * @return Concatenated headers
+	 */
 	private final String head() {
 		String head =  String.join("   ", HEADERS);
 
 		return head;
 	}
 	
+	/**
+	 * Returns the horizontal rule
+	 * @return horizontal rule
+	 */
 	private final String horzRule() {
 		String horz =  String.join("   ", HORIZONTAL_RULE);
 
 		return horz;
 	}
 
+	/**
+	 * Formats strings from the ReadFile and writes the lines to a new file
+	 * @throws IOException throws exception if it cannot find files
+	 */
 	public void writeFormattedLine() throws IOException {
 		String[] data = new String[5];
 
@@ -54,7 +76,10 @@ public class FormatFile {
 		
 		writer.closeFile();
 	}
-
+	
+	/**
+	 * Creates the format-string used in printf method
+	 */
 	private void createPatterns() {
 		// create field for all the patterns
 		for (int i = 0; i < HEADERS.length; i++) {

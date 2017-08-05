@@ -2,9 +2,9 @@ package FileReadWrite;
 import java.io.*;
 
 /**
- * This class represents a text (.txt) file
+ * Reads data from file
  * 
- * @author Wesley
+ * @author Wesley Chan
  *
  */
 public class ReadFile {
@@ -12,19 +12,30 @@ public class ReadFile {
 	private File f;
 	private String[] fileLines;
 
+	/**
+	 * Constructor with file path and number of lines as arguments
+	 * 
+	 * @param fileName filepath
+	 * @param numLines	number of records in file
+	 * @throws IOException throws exception if it cannot find the file
+	 */
 	public ReadFile(String fileName, String numLines) throws IOException {
 		f = new File(fileName);
 		fileLines = new String[Integer.parseInt(numLines)];
 	}
-
-	public String getFileName() {
-		return f.getPath();
-	}
-
+	
+	/**
+	 * Gets the fileLines array
+	 * @return fileLines array
+	 */
 	public String[] getFileLines() {
 		return fileLines;
 	}
 
+	/**
+	 * Reads the file line by line and stores each in an index of the fileLines array
+	 * @throws IOException throws exception if it cannt find the file
+	 */
 	public void readFromFile() throws IOException {
 
 		FileReader fr = new FileReader(f);
@@ -34,19 +45,6 @@ public class ReadFile {
 			fileLines[i] = input.readLine();
 		}
 		input.close();
-
-	}
-
-	private int lines() throws IOException {
-		// For testing only
-		BufferedReader br = new BufferedReader(new FileReader(f.getName()));
-		int lines = 0;
-		while (br.readLine() != null) {
-			lines++;
-		}
-		br.close();
-
-		return lines;
 	}
 
 }
